@@ -1,0 +1,26 @@
+jefferson silva dos anjos (0rakul0)
+Ciência de Dados ML Python Ciência da Computação Web Hacking Desenvolvedor Web ReactJs React-Native Front_End Back_End Full-Stack
+python, Front_End ciência de dados desenvolvimento web e ciência da computação
+ciência da computação: { 
+  fundamentos: base de tudo;
+  desenvolvimento de algoritmos: o que é necessário para desenvolver a lógica para qualquer linguagem de programação;
+  desenvolvimento web: Front_End e Back_End, a princípio em javascript;
+},
+Hacking web: {
+ base_HW:[
+  como funciona Redes de computadores.
+  como funciona as coisas na internet.
+  os buracos que não podem ter em seu site.
+  como achar buracos nos sites.
+ ]
+},
+Ciência de dados: {
+ base_Dados:[
+  regressão linear.
+  analise de dados.
+  visualização de dados.
+  modelagem de dados.
+  machine learning.
+  big data.
+ ]
+}

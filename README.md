@@ -165,6 +165,7 @@ for hit in res['hits']['hits']:
     tipos: PUT, GET, POST, DELETE, HEAD
     
     tipo <nome_do_banco>/<tipo>/id     |||    PUT bd-python-elastic/_doc/3
+   
 ```
 ## create
 ```json
@@ -177,6 +178,10 @@ PUT bd-python-elastic/_doc/3
   "pets" : "gato",
   "nome_pet" : "juju"
 }
+```
+## consultar indices
+```json
+GET _cat/indices
 ```
 ## consultar tudo
 ```json
@@ -217,7 +222,6 @@ get _search
 ## pinned Querry geral
 ```json
 # o id <- em ids dentro de pinned dá o id que irá aparecer primeiro nas buscas
-        
 get  bd-python-elastic/_search
 {
   "_source" : ["nome", "idade", "sexo", "hobbies", "pets", "nome_pet"],
@@ -252,6 +256,11 @@ get  bd-python-elastic/_search
 }
 ```
 # enriquecimento de dados
+
+<p>O enriquecimento de dados tem como objetivo, relacionar um documento com outro.
+No exemplo a seguir será usado dois documentos, um de municipios e um de usuario.
+Ao final podemos obter em uma chamada as propriedades dos dois documentos.</p>
+
 ### criando mapping MODEL
 ```json
 put municipios
@@ -304,12 +313,12 @@ put /_enrich/policy/users-police-municipios
 }
 ```
 ### execução da politica
-```
+```json
 post /_enrich/policy/users-police-municipios/_execute
 ```
 
 ### deletando politica 
-```
+```json
 delete /_enrich/policy/users-police-municipios
 ```
 ### adicionando pipeline
@@ -359,6 +368,39 @@ GET municipios/_search
 {
   "query": {
     "match_all": {}
+  }
+}
+```
+## contagem de termos <- mtermvectors
+<p>
+Algumas dicas:
+<hr>
+inicie com um mapping, o exemplo é da música da banda ac/dc </p>
+
+```json
+put ac-dc
+{
+  "settings": {
+    "analysis": {
+      "analizer": {
+        "my_analyzer": {
+          "tokenizer": "standard",
+          "filter": [
+            "stop"
+          ],
+          "stopwords": "_english_"
+        }
+      }
+    },
+    "mappings": {
+      "properties": {
+        "letra": {
+          "type": "text",
+          "search_analyzer": "my_analyzer",
+          "analyzer": "my_analyzer"
+        }
+      }
+    }
   }
 }
 ```
