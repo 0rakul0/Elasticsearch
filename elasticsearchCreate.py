@@ -8,21 +8,21 @@ urllib3.disable_warnings()
 client = Elasticsearch(['https://192.168.1.108:9200'], basic_auth=("elastic", "00110011aa@A"), verify_certs=False)
 
 doc = {
-    "nome": "Jefferson Silva dos Anjos",
-    "idade": 30,
-    "sexo": "masculino",
-    "hobbies": ["desenvolvedor web", "python", "Java"],
+    "nome": "Soraya Alexandra Lopes Ribeiro",
+    "idade": 15,
+    "sexo": "feminino",
+    "hobbies": ["desenvolvedor web", "python", "Java", "youtuber"],
     "pets": "gato",
-    "nome_pet": "berus",
+    "nome_pet": "verona",
     "timestamp": datetime.datetime.now(),
 }
 #crud com elastic
 
 #create se for a primeira vez, update se for o mesmo id
-res = client.index(index="bd-python-elastic", id=2, document=doc)
+res = client.index(index="bd-python-elastic", id=1, document=doc)
 print(f"estatus inserção: {res['result']}")
 
 #read index="python-elasticsearch"
-res = client.get(index="bd-python-elastic", id=2)
+res = client.get(index="bd-python-elastic", id=1)
 print(res['_source'])
 
