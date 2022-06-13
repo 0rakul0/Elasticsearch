@@ -11,21 +11,22 @@ es = Elasticsearch(['https://192.168.1.108:9200'], basic_auth=("elastic", "00110
 nome_banco = "bd-python-elastic"
 
 # CRUD - create
-def create():
-    new_nome = input("\n Digite o nome: ")
-    new_idade = input("\n Digite a idade: ")
-    new_sexo = input("\n Digite o sexo: ")
-    new_hobbies = input("\n Digite os hobbies: ")
-    new_pets = input("\n Digite o tipo de pets: ")
-    new_nome_pet = input("\n Digite o nome do pet: ")
+def create(nome, idade, sexo, hobbies, pets, nome_pet):
+
+    nome = input("\n Digite o nome: ")
+    idade = input("\n Digite a idade: ")
+    sexo = input("\n Digite o sexo: ")
+    hobbies = input("\n Digite os hobbies: ")
+    pets = input("\n Digite o tipo de pets: ")
+    nome_pet = input("\n Digite o nome do pet: ")
 
     doc = {
-        "nome": new_nome,
-        "idade": new_idade,
-        "sexo": new_sexo,
-        "hobbies": new_hobbies,
-        "pets": new_pets,
-        "nome_pet": new_nome_pet,
+        "nome": nome,
+        "idade": idade,
+        "sexo": sexo,
+        "hobbies": hobbies,
+        "pets": pets,
+        "nome_pet": nome_pet,
         "timestamp": datetime.now(),
     }
     res = es.index(index=nome_banco, id=str(uuid.uuid4()), document=doc)
